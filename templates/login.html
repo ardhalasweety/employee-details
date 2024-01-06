@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Login Page</title>
+</head>
+<body>
+    
+    <div class="login-container">
+        <h1 style="text-align: center; color: rgb(241, 76, 11);text-decoration: underline;">Python Navigation Project</h1>
+        <br><br>
+        <h2>Login</h2>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for message in messages %}
+                        <li class="flash-message {{ message[1] }}" style="color: crimson;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('login') }}" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        <br>
+        <a href="/reset">forget password? -click</a><br>
+        <a href="/newuser">Click here: New user registration</a>
+        
+    </div>
+
+</body>
+</html>
